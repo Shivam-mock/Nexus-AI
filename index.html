@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusAI - Browser Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="animated-logo">
+                        <div class="core"></div>
+                        <div class="ring"></div>
+                    </div>
+                    <span class="logo-text">NexusAI</span>
+                </div>
+                <button class="mobile-close-btn" id="closeSidebarBtn"><i class="fas fa-times"></i></button>
+            </div>
+
+            <button class="new-chat-btn" id="newChatBtn">
+                <i class="fas fa-plus"></i> <span>New Chat</span>
+            </button>
+
+            <div class="history-section">
+                <div class="section-title">Chat History</div>
+                <div class="history-list" id="historyList">
+                    </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="footer-btn" id="themeToggleBtn">
+                    <i class="fas fa-moon"></i> <span id="themeToggleText">Light Mode</span>
+                </button>
+                <button class="footer-btn" id="clearHistoryBtn">
+                    <i class="fas fa-trash-alt"></i> <span>Clear All Chats</span>
+                </button>
+                <button class="footer-btn" id="exportChatBtn">
+                    <i class="fas fa-download"></i> <span>Export Current Chat</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <button class="menu-toggle-btn" id="openSidebarBtn"><i class="fas fa-bars"></i></button>
+                <div class="model-info">
+                    <span class="model-name">Qwen 1.5 (0.5B Local)</span>
+                    <div class="status-indicator loading" id="statusIndicator">
+                        <span class="status-dot"></span>
+                        <span class="status-text" id="statusText">Initializing Model...</span>
+                    </div>
+                </div>
+                <div class="metrics-container">
+                    <div class="metric-item">
+                        <i class="fas fa-calculator"></i>
+                        <span class="metric-label">Tokens Used:</span>
+                        <span class="metric-value" id="tokenCounter">0</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="model-loader-overlay" id="loaderOverlay">
+                <div class="loader-card">
+                    <div class="spinner"></div>
+                    <h3>Downloading Neural Engine</h3>
+                    <p>Loading model dynamically into your browser storage. This only happens once.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progressBarFill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-status" id="progressStatus">Connecting to HuggingFace mirrors...</div>
+                </div>
+            </div>
+
+            <div class="chat-window" id="chatWindow">
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h2>Welcome to NexusAI</h2>
+                    <p>A fully decentralized, private local LLM framework operating entirely inside your browser sandbox.</p>
+                    <div class="capabilities-grid">
+                        <div class="capability-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>100% Private</h4>
+                            <p>No backend telemetry. Your data stays localized in client RAM.</p>
+                        </div>
+                        <div class="capability-card">
+                            <i class="fas fa-code"></i>
+                            <h4>Rich Formatting</h4>
+                            <p>Full support for Markdown renders and syntax-highlighted code blocks.</p>
+                        </div>
+                        <div class="capability-card">
+                            <i class="fas fa-bolt"></i>
+                            <h4>Web Speech API</h4>
+                            <p>Dictate messages naturally using native high-speed audio pipelines.</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            <footer class="input-area">
+                <div class="input-wrapper">
+                    <textarea class="chat-input" id="chatInput" placeholder="Ask NexusAI anything... (Press Enter to send, Shift+Enter for newline)" rows="1"></textarea>
+                    <div class="input-actions">
+                        <button class="action-btn" id="voiceInputBtn" title="Voice Input">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="send-btn" id="sendBtn" title="Send Message">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
